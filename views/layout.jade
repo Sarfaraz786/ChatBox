@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title= title
+    link(href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
+    link(rel='stylesheet', href='/stylesheets/reset.css')
+    link(rel='stylesheet', href='/stylesheets/common.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    block content
+
+    include inc/_js-templates.html
+    script(type="text/javascript", src='/javascripts/lib/jquery.min.js')
+    script(type="text/javascript", src='/javascripts/lib/handlebars.js')
+    script(type="text/javascript", src='/javascripts/script.js')

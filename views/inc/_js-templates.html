@@ -1,0 +1,38 @@
+<script type="text/template" id="user-chat-box">
+  <div class="user-chat-box box js-user-chat-box" data-username="{{username}}">
+    <div class="chat-count">0</div>
+    <header>
+      <div class="h4">
+        <h4 class="js-user-chat-minimize">{{username}}</h4>
+      </div>
+      <div class="video-camera">
+        <i class="fa fa-video-camera"></i>
+      </div>
+      <div class="dineout">
+        <i class="fa fa-cutlery"></i>
+      </div>
+      <div class="close js-close-chat-box">
+        <i class="fa fa-times"></i>
+      </div>
+    </header>
+    <ul class="chats"></ul>
+    <form class="js-send-chat">
+      <div class='field'>
+        <input type="text" placeholder="Type to send Message" name="msg">
+      </div>
+      <div class="picture">
+        <i class="fa fa-camera"></i>
+      </div>
+      <div class="heart">
+        <i class="fa fa-heart"></i>
+      </div>
+    </form>
+  </div>
+</script>
+
+<script type="text/template" id="user-chat-text">
+<li class="{{chatClass}}">
+  <img src="/images/user-avatars/small-{{username}}.jpg" alt="{{username}}">
+  <div>{{text}}</div>
+</li>
+</script>

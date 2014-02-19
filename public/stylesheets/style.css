@@ -1,0 +1,173 @@
+div.user-list {
+  position: fixed;
+  border: 1px solid #ccc;
+  width: 150px;
+  bottom: 0px;
+  right: 0;
+  background: #fff;
+}
+div.user-list ul li {
+  padding: 2px 10px;
+}
+div.user-list ul li a {
+  display: block;
+  color: #333;
+}
+div.user-list ul li img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 15px;
+  margin-right: 5px;
+}
+div.user-list h4 {
+  border-bottom: 1px dotted #ccc;
+  padding: 4px 10px;
+}
+div.user-list .search {
+  border-top: 1px solid #ccc;
+}
+div.user-list .search form {
+  display: table-row;
+}
+div.user-list .search form div {
+  display: table-cell;
+}
+div.user-list .search input {
+  border: none;
+  width: 100%;
+  padding: 3px 10px;
+}
+div.user-list .search form div.setting, div.user-list .search form div.hide {
+  cursor: pointer;
+  padding: 3px;
+}
+.chat-boxes {
+  position: fixed;
+  right: 150px;
+  bottom: 0;
+}
+.chat-boxes .box {
+  float: left;
+  border: 1px solid #ccc;
+  width: 200px;
+  margin-right: 5px;
+  background: #fff;
+  position: relative;
+}
+.chat-boxes .box .chat-count {
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  background: #f00;
+  color: #fff;
+  border-radius: 2px;
+  box-shadow: 1px 1px 2px #333;
+  top: -10px;
+  right: 10px;
+  text-align: center;
+  display: none;
+}
+.chat-boxes .box form {
+  display: table-row;
+  border-top: 1px solid #ccc;
+}
+.chat-boxes .box form > div {
+  display: table-cell;
+}
+.chat-boxes .box form input[type=text] {
+  width: 100%;
+  padding: 3px 10px;
+  border: none;
+}
+.chat-boxes .box form div.picture, .chat-boxes .box form div.heart {
+  cursor: pointer;
+  padding: 3px;
+}
+.chat-boxes .box h4 {
+  padding: 4px 10px;
+  width: 100%;
+}
+.chat-boxes .box header {
+  display: table-row;
+}
+.chat-boxes .box header > div {
+  display: table-cell;
+}
+.chat-boxes .box header > div.h4 {
+  width: 100%;
+  cursor: pointer;
+}
+.chat-boxes .box header > div.video-camera, .chat-boxes .box header > div.dineout, .chat-boxes .box header > div.close {
+  cursor: pointer;
+  padding: 3px;
+}
+.chat-boxes .box .chats {
+  max-height: 200px;
+  min-height: 200px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  overflow: auto;
+}
+.chat-boxes .box.minimize .chats, .chat-boxes .box.minimize form {
+  display: none;
+}
+.chat-boxes .box .chats li {
+  margin: 5px 10px;
+}
+.chat-boxes .box .chats li div {
+  display: inline-block;
+}
+.chat-boxes .box .chats li div {
+  border: 1px solid #ccc;
+  background: #e9e9e9;
+  border-radius: 3px;
+  padding: 2px 7px;
+  position: relative;
+  text-align: left;
+}
+.chat-boxes .box .chats li.myself {
+  text-align: right;
+}
+.chat-boxes .box .chats li div:after, .chat-boxes .box .chats li div:before {
+  display: block;
+  content:" ";
+  border: 6px solid #e9e9e9;
+  position: absolute;
+  border-left: none;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  left: -6px;
+  top: 50%;
+  margin-top: -6px;
+  z-index: 3;
+}
+.chat-boxes .box .chats li div:before {
+  z-index: 2;
+  left: -7px;
+  border-color: #ccc;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+.chat-boxes .box .chats li.myself div:after, .chat-boxes .box .chats li.myself div:before {
+  right: -6px;
+  left: auto;
+  border: 6px solid #e9e9e9;
+  border-right: none;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+.chat-boxes .box .chats li.myself div:before {
+  right: -7px;
+  left: auto;
+  border-color: #ccc;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+.chat-boxes .box .chats li img {
+  width: 20px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.chat-boxes .box .chats li.myself img {
+  display: none;
+}
