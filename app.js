@@ -1,15 +1,13 @@
-/**
- * Module dependencies.
- */
-
 var express = require('express');
+var app = express();
+var http = require('http');
+var server = http.createServer(app)
+var io = require('socket.io').listen(server)
+var path = require('path');
+
 var routes = require('./routes');
 var user = require('./routes/user');
 var chat = require('./routes/chat');
-var http = require('http');
-var path = require('path');
-
-var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -33,6 +31,24 @@ app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/chat', chat.index);
 
-http.createServer(app).listen(app.get('port'), function() {
+/*http.createServer(app).listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
+});
+*/
+server.listen(3000);
+io.set('loglevel', 10);
+
+
+/* Socket-IO */
+io.on('connection', function(socket) {
+
+  socket.emit('init', {
+    msg: "test"
+  });
+
+  socket.on('userChat', function(data) {
+    socket.emit('userChat', data);
+  });
+
+
 });

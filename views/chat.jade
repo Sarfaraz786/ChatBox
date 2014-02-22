@@ -4,47 +4,7 @@ block content
   div.user-list
     h4 10 Online Buddies
 
-    ul
-      li(data-username='user-1')
-        a
-          img(src='/images/user-avatars/small-user-1.jpg', alt='')
-          span User 1
-      li(data-username='user-2')
-        a
-          img(src='/images/user-avatars/small-user-2.jpg', alt='')
-          span User 2
-      li(data-username='user-3')
-        a
-          img(src='/images/user-avatars/small-user-3.jpg', alt='')
-          span User 3
-      li(data-username='user-4')
-        a
-          img(src='/images/user-avatars/small-user-4.jpg', alt='')
-          span User 4
-      li(data-username='user-5')
-        a
-          img(src='/images/user-avatars/small-user-5.jpg', alt='')
-          span User 5
-      li(data-username='user-6')
-        a
-          img(src='/images/user-avatars/small-user-6.jpg', alt='')
-          span User 6
-      li(data-username='user-7')
-        a
-          img(src='/images/user-avatars/small-user-7.jpg', alt='')
-          span User 7
-      li(data-username='user-8')
-        a
-          img(src='/images/user-avatars/small-user-8.jpg', alt='')
-          span User 8
-      li(data-username='user-9')
-        a
-          img(src='/images/user-avatars/small-user-9.jpg', alt='')
-          span User 9
-      li(data-username='user-10')
-        a
-          img(src='/images/user-avatars/small-user-10.jpg', alt='')
-          span User 10
+    ul.js-user-ul
 
     div.search
       form
@@ -52,7 +12,9 @@ block content
           input(type='text', placeholder='Search').q
         div.setting
           i.fa.fa-gear
-        div.hide
+        div.hide.js-chat-toggle-sign
           i.fa.fa-sign-out
+        div.show.js-chat-toggle-sign
+          i.fa.fa-sign-in
 
   div.chat-boxes.clearfix.js-chat-boxes

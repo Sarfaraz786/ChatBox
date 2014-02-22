@@ -6,6 +6,27 @@ div.user-list {
   right: 0;
   background: #fff;
 }
+div.user-list.minimize {
+  width: auto;
+}
+div.user-list.minimize ul li a span {
+  display: none;
+}
+div.user-list.minimize h4 {
+  display: none;
+}
+div.user-list.minimize .search form div {
+  display: none;
+}
+div.user-list.minimize .search form {
+  display: block;
+}
+div.user-list.minimize .search form div.show {
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  padding: 3px 0;
+}
 div.user-list ul li {
   padding: 2px 10px;
 }
@@ -37,6 +58,9 @@ div.user-list .search input {
   width: 100%;
   padding: 3px 10px;
 }
+div.user-list .search form div.show {
+  display: none;
+}
 div.user-list .search form div.setting, div.user-list .search form div.hide {
   cursor: pointer;
   padding: 3px;
@@ -47,12 +71,16 @@ div.user-list .search form div.setting, div.user-list .search form div.hide {
   bottom: 0;
 }
 .chat-boxes .box {
-  float: left;
+  display: inline-block;
   border: 1px solid #ccc;
   width: 200px;
   margin-right: 5px;
   background: #fff;
   position: relative;
+  vertical-align: bottom;
+}
+.chat-boxes .box.activeBox {
+    border-color: #333;
 }
 .chat-boxes .box .chat-count {
   position: absolute;

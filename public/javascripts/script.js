@@ -1,31 +1,43 @@
 var userChatBox = Handlebars.compile($("#user-chat-box").html());
-var userChatText = Handlebars.compile($("#user-chat-text").html());
+var socket = io.connect();
 
 $('div.user-list').on('click', 'ul li', function() {
-  $('.chat-boxes').append(userChatBox($(this).data()));
-});
-$('.js-chat-boxes').on('click', '.js-user-chat-minimize', function(e) {
-  e.preventDefault();
-  var userChatBox = $(this).closest('.js-user-chat-box'); //.toggleClass('minimize');
-  if(userChatBox.hasClass('minimize')){
-    userChatBox.removeClass('minimize');
-    $('.chat-count', userChatBox).text('').css('display', 'none');
+  var _thisBox = $('#user-' + $(this).data('username'), '.chat-boxes');
+  if(_thisBox.length == 0){
+    var cBox = $(userChatBox($(this).data()));
+    $('.chat-boxes').prepend(cBox);
+    highlightChatBox(cBox);
+    $('form input[type=text]', cBox).on('focus', function(){
+      highlightChatBox(cBox);
+    });
   }else{
-    userChatBox.addClass('minimize');
+    userChatMinMax(_thisBox, 'open');
+    highlightChatBox(_thisBox);
   }
 });
+
+
+$('.js-chat-boxes').on('click', '.js-user-chat-minimize', function(e) {
+  e.preventDefault();
+  userChatMinMax($(this));
+});
+
 
 $('.js-chat-boxes').on('click', '.js-close-chat-box', function(e) {
   e.preventDefault();
   $(this).closest('.js-user-chat-box').remove();
 });
 
+
 $('.js-chat-boxes').on('submit', '.js-send-chat', function(e) {
   e.preventDefault();
   var msg = $('[name=msg]', this);
   var parentBox = $(this).closest('.js-user-chat-box');
   var chats = $('ul.chats', parentBox);
-  chats.append(userChatText({
+
+  socket.emit('userChat', { 'msg': msg.val() });
+
+  /*chats.append(userChatText({
     text: msg.val(),
     chatClass: 'myself',
     username: parentBox.data('username')
@@ -34,8 +46,10 @@ $('.js-chat-boxes').on('submit', '.js-send-chat', function(e) {
     text: msg.val(),
     chatClass: '',
     username: parentBox.data('username')
-  }));
+  }));*/
+
   msg.val('');
+
   $('ul.chats').each(function(){
     var _thisParentBox = $(this).closest('.js-user-chat-box');
     if(_thisParentBox.hasClass('minimize')){
@@ -44,5 +58,27 @@ $('.js-chat-boxes').on('submit', '.js-send-chat', function(e) {
       if(!chatCountVal) chatCountVal = 0;
       chatCount.text(++chatCountVal).css('display', 'block');
     }
-  })
+  });
+
 });
+
+
+$('.user-list').on('click', '.js-chat-toggle-sign', function(e){
+  e.preventDefault();
+  console.log('123');
+  var _this = $(this);
+  var userList = _this.closest('.user-list');
+  userList.toggleClass('minimize');
+});
+
+
+for(var i=1; i<=10; i++){
+  addChatUser('user-' + i, 'User ' + i);
+}
+
+/* Socket work */
+socket.on('userChat', function (data) {
+  console.log(data);
+});
+
+

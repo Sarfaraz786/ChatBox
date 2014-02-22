@@ -1,5 +1,5 @@
 <script type="text/template" id="user-chat-box">
-  <div class="user-chat-box box js-user-chat-box" data-username="{{username}}">
+  <div class="user-chat-box box js-user-chat-box" data-username="{{username}}" id="user-{{username}}">
     <div class="chat-count">0</div>
     <header>
       <div class="h4">
@@ -18,7 +18,7 @@
     <ul class="chats"></ul>
     <form class="js-send-chat">
       <div class='field'>
-        <input type="text" placeholder="Type to send Message" name="msg">
+        <input type="text" placeholder="Type to send Message" name="msg" autofocus>
       </div>
       <div class="picture">
         <i class="fa fa-camera"></i>
@@ -35,4 +35,9 @@
   <img src="/images/user-avatars/small-{{username}}.jpg" alt="{{username}}">
   <div>{{text}}</div>
 </li>
+</script>
+
+<script type="text/template" id="template-user-chat-profile">
+  <li data-username="{{username}}"><a><img src="/images/user-avatars/small-{{username}}.jpg" alt=""><span>{{fullname}}</span></a>
+  </li>
 </script>
