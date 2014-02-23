@@ -20,11 +20,13 @@ function userChatMinMax(ele, stat) {
   highlightChatBox(ele);
 }
 
-function addChatUser(username, fullname){
+function addChatUser(data){
+  if(!data.username) return false;
   var userChatProfile = Handlebars.compile($("#template-user-chat-profile").html());
   var data = {
-    'username': username,
-    'fullname': fullname
+    'username': data.username,
+    'fullname': data.username,
+    'emailHash': data.emailHash
   };
   $('.js-user-ul').append(userChatProfile(data));
 }
@@ -36,4 +38,20 @@ function addUserChatMsg(msg, username){
     chatClass: '',
     username: username
   }));
+}
+
+function addUserChatBox(data){
+  if(!data.username) return false;
+  var _thisBox = $('#user-' + data.username + ' .chat-boxes');
+  if (_thisBox.length == 0) {
+    var cBox = $(userChatBox(data));
+    $('.chat-boxes').prepend(cBox);
+    highlightChatBox(cBox);
+    $('form input[type=text]', cBox).on('focus', function() {
+      highlightChatBox(cBox);
+    });
+  } else {
+    userChatMinMax(_thisBox, 'open');
+    highlightChatBox(_thisBox);
+  }
 }

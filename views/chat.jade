@@ -1,20 +1,39 @@
 extends layout
 
 block content
-  div.user-list
-    h4 10 Online Buddies
+  div.chat-page(style='display: none')
+    div.user-list
+      h4 10 Online Buddies
 
-    ul.js-user-ul
+      ul.js-user-ul
 
-    div.search
-      form
-        div.field
-          input(type='text', placeholder='Search').q
-        div.setting
-          i.fa.fa-gear
-        div.hide.js-chat-toggle-sign
-          i.fa.fa-sign-out
-        div.show.js-chat-toggle-sign
-          i.fa.fa-sign-in
+      div.search
+        form
+          div.field
+            input(type='text', placeholder='Search').q
+          div.setting
+            i.fa.fa-gear
+          div.hide.js-chat-toggle-sign
+            i.fa.fa-sign-out
+          div.show.js-chat-toggle-sign
+            i.fa.fa-sign-in
 
-  div.chat-boxes.clearfix.js-chat-boxes
+    div.chat-boxes.clearfix.js-chat-boxes
+
+  div.login-box
+    h1
+      i.fa.fa-lock
+      | Login
+    form
+      ul
+        li
+          i.field-icon.fa.fa-user
+          input.field(type='text', placeholder='Enter Username', name='username', required)
+        li
+          i.field-icon.fa.fa-envelope
+          input.field(type='email', placeholder='Enter Email', name='email', required)
+      button.submit
+         i.fa.fa-sign-in
+      label.remember-me
+        input.chbx(type='checkbox', value='1')
+        | &nbsp; Remeber Me (You do not need to login again...)

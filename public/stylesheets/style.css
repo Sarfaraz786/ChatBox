@@ -199,3 +199,85 @@ div.user-list .search form div.setting, div.user-list .search form div.hide {
 .chat-boxes .box .chats li.myself img {
   display: none;
 }
+
+.login-box {
+  position: absolute;
+  width: 400px;
+  height: 135px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 10px #ccc;
+  padding: 30px 30px;
+}
+.login-box h1 {
+  position: absolute;
+  left: 10px;
+  top: -21px;
+  line-height: 20px;
+  color: #fff;
+  font-size: 26px;
+}
+.login-box h1 .fa {
+  margin-right: 5px;
+  font-size: 16px;
+  vertical-align: baseline;
+}
+.login-box .field {
+  width: 100%;
+  padding: 5px 4px 5px 25px;
+  border: 1px solid #ccc;
+}
+.login-box li {
+  padding: 5px 0;
+  position: relative;
+}
+.login-box li .field-icon {
+  position: absolute;
+  top: 13px;
+  left: 7px;
+  color: #ccc;
+}
+.login-box .submit {
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  padding: 0px 15px 4px 15px;
+  background: #fff;
+  color: #ccc;
+  cursor: pointer;
+  position: absolute;
+  bottom: -30px;
+  right: 10px;
+  height: 30px;
+  line-height: 27px;
+  font-family: Lato;
+  font-size: 16px;
+}
+.remember-me {
+  position: absolute;
+  left: 10px;
+  bottom: -25px;
+  color: #999;
+  cursor: pointer;
+}
+.remember-me .chbx {
+  vertical-align: middle;
+  appearance:none;
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
+  width: 15px;
+  height: 15px;
+  border: 2px solid #fff;
+  font-family: FontAwesome;
+}
+.remember-me .chbx:checked:after {
+  display: block;
+  content: "\f00c";
+  color: #fff;
+  font-size: 11px;
+}

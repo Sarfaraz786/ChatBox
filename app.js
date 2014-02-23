@@ -4,6 +4,7 @@ var http = require('http');
 var server = http.createServer(app)
 var io = require('socket.io').listen(server)
 var path = require('path');
+var crypto = require('crypto');
 
 var routes = require('./routes');
 var user = require('./routes/user');
@@ -37,18 +38,50 @@ app.get('/chat', chat.index);
 */
 server.listen(3000);
 io.set('loglevel', 10);
-
+var users = {};
 
 /* Socket-IO */
 io.on('connection', function(socket) {
 
-  socket.emit('init', {
-    msg: "test"
+  io.sockets.emit('init', {
+    msg: "test",
+    socket_id: socket.id
+  });
+
+  socket.on('login', function(data) {
+
+    users[data.username] = {
+      username: data.username,
+      email: data.email
+    }
+
+    if (users[data.username].sockets) {
+      users[data.username].sockets.push(socket);
+    } else {
+      users[data.username].sockets = [socket];
+    }
+
+    socket.emit('loggedin', {
+      id: socket.id,
+      usename: data.username,
+      emailHash : crypto.createHash('md5').update(data.email).digest('hex'),
+      email: data.email
+    });
+
   });
 
   socket.on('userChat', function(data) {
-    socket.emit('userChat', data);
-  });
 
+
+    if (users[data.to]) {
+      for (var s in users[data.to].sockets) {
+        users[data.to].sockets[s].emit('userChat', data);
+      }
+    } else {
+      socket.emit('error', {
+        'msg': 'no user with usernmae : ' + data.to
+      });
+    }
+  });
 
 });
